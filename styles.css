@@ -15,6 +15,10 @@ label {
     font-weight: bold;
 }
 
+#club-face-label {
+    
+}
+
 input[type="range"] {
     width: 100%;
 }
@@ -93,7 +97,7 @@ input[type="range"] {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    height: 250px;
+    height: 140px;
     position: relative;
     border: 5px solid red;
 }

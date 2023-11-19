@@ -12,18 +12,12 @@
         <div id="intro-section">
             <!-- <p>hello</p> -->
             <div class="controls">
-                <label for="club-face">Club Face</label>
-                <input type="range" id="club-face" min="0" max="120" step="1" value="60">
-                <label for="swing-path">Swing Path</label>
-                <input type="range" id="swing-path" min="0" max="120" step="1" value="60">
+                <label id="club-face-label" for="club-face">Club Face</label>
+                <input type="range" id="club-face" min="-6" max="6" step="0.1" value="0">
+                <label id="swing-path-label" for="swing-path">Swing Path</label>
+                <input type="range" id="swing-path" min="-6" max="6" step="0.1" value="0">
                 <label for="swing-speed">Swing Speed</label>
                 <input type="range" id="swing-speed" min="0" max="120" step="1" value="60">
-                <label for="attack-angle">Attack Angle</label>
-                <input type="range" id="attack-angle" min="0" max="120" step="1" value="60">
-            </div>
-            <div class="ball-flight">
-                <!-- <h2>Ball Flight:</h2> -->
-                <div id="ballFlightVisual2"></div>
             </div>
         </div>
         <div class="club-head-path-container">

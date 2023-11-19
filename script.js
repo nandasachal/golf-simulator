@@ -5,35 +5,36 @@ document.addEventListener("DOMContentLoaded", function () {
     const swingPathInput = document.getElementById("swing-path");
     swingPathInput.addEventListener("input", updateSwingPath);
     
-    const swingSpeedInput = document.getElementById("swing-speed");
-    swingSpeedInput.addEventListener("input", updateBallFlight);
+    const ballFlightInputOne = document.getElementById("club-face");
+    ballFlightInputOne.addEventListener("input", updateBallFlight);
+
+    const ballFlightInputTwo = document.getElementById("swing-path");
+    ballFlightInputTwo.addEventListener("input", updateBallFlight);
 
     function updateClubFace() {
         const clubHead = document.getElementById("club-head");
         const curveAmount = clubFaceInput.value; // Get the slider value
-        const curveFactor = (curveAmount - 60) / 60; // Convert to a factor between -1 and 1
+        clubHead.style.transform =  `translate(-50%, -50%) rotate(${curveAmount}deg)`;
 
-        // Apply the curve using CSS transform
-        // arrow.style.transform = `rotate(${curveFactor * 45}deg)`;
-        clubHead.style.transform =  `translate(-50%, -50%) rotate(${curveFactor * 45}deg)`;
+        const clubFaceTitle = document.getElementById("club-face-label");
+        clubFaceTitle.textContent = "Club Face: (" + curveAmount + " degrees)";
         console.log(clubHead.style.transform)
     }
 
     function updateSwingPath() {
         const swingPath = document.getElementById("swing-path-arrow");
-        const curveAmount = swingPathInput.value; // Get the slider value
-        const curveFactor = (curveAmount - 60) / 60; // Convert to a factor between -1 and 1
+        const curveAmount = swingPathInput.value; // Get the slider valuu
+        swingPath.style.transform =  `translate(-50%, -50%) rotate(${curveAmount}deg)`;
 
-        // Apply the curve using CSS transform
-        // arrow.style.transform = `rotate(${curveFactor * 45}deg)`;
-        swingPath.style.transform =  `translate(-50%, -50%) rotate(${curveFactor * 45}deg)`;
+        const clubFaceTitle = document.getElementById("swing-path-label");
+        clubFaceTitle.textContent = "Swing Path: (" + curveAmount + " degrees)";
     }
 
     function updateBallFlight() {
         const ballFlightVisual = document.getElementById("ballFlightVisual");
-        console.log(swingSpeedInput.value);
+
         let svgContent = "";
-        if (swingSpeedInput.value < 40) {
+        if (swingPathInput.value > clubFaceInput.value) {
             // Fade Path
             svgContent = `
             <svg viewBox="0 0 200 164" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </svg>
 
             `;
-        } else if (swingSpeedInput.value >= 40 && swingSpeedInput.value <= 80) {
+        } else if (swingPathInput.value == clubFaceInput.value) {
             // Straight
             svgContent = `
             <svg viewBox="0 0 200 164" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ballFlightVisual.innerHTML = svgContent;
     }
 
-    // Initialize arrow based on the initial slider value
+    // Initialize based on the initial slider value
     updateClubFace();
     updateSwingPath();
     updateBallFlight();
