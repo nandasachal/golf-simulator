@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const ballFlightVisual = document.getElementById("ballFlightVisual");
 
         let svgContent = "";
-        if (swingPathInput.value > clubFaceInput.value) {
+        if (swingPathInput.value < clubFaceInput.value) {
             // Fade Path
             svgContent = `
             <svg viewBox="0 0 200 164" fill="none" xmlns="http://www.w3.org/2000/svg">
