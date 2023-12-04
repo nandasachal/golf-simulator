@@ -13,6 +13,12 @@ import DescriptionComponent from './DescriptionComponent';
 
 function App() {
 
+  const background = "In the diagram, the target is straight, at 0° Club Path Angle. When using the toggles, " 
+    + "a negative angle means pointing to the left more, and a positive angle means pointing to the right. "
+    + "Club Path Angle is the direction of your swing in relation to the target. Club Face Angle is the direction of the "
+    + "actual club face in relation to the target. The simulation is created assuming you are an amateur right-handed golfer, "
+    + "carrying a driver about 250 yards. The results are estimates intended for conveying an idea and educating, not actuals.";
+
   const [clubFaceAngleSliderValue, setClubFaceAngleSliderState] = useState(0.0);
   const [clubPathAngleSliderValue, setClubPathAngleSliderState] = useState(0.0);
   const [ballCurve, setBallCurveState] = useState([]);
@@ -81,6 +87,12 @@ function App() {
           <div className="row">
             <div className="col-sm">
               <div className="text-center text-xl mb-1 rounded">
+                Background
+              </div>
+              <div className="text-justify mb-1">
+                {background}
+              </div>
+              <div className="text-center text-xl mb-1 rounded">
                 Golf Swing Toggles
               </div>
               <SliderVariable 
@@ -109,17 +121,17 @@ function App() {
                 defaultValue={100} 
                 units={"miles per hour"}
               /> */}
-               <div className="text-center text-xl my-1 rounded">
-                What is Happening Here?
+              <div className="text-center text-xl my-1 rounded">
+                Understanding the Ball Flight
               </div>
-              <div className="text-justify border border-2 mb-1">
+              <div className="text-justify mb-1">
               <DescriptionComponent
                 ballCurve={ballCurve}
                 clubPathDirection={clubPathDirection}
               />
               </div>
             </div>
-            <div className="col-sm-8">
+            <div className="col-xl-8">
               <div className="golf-visual-container">
                 <GolfRangeComponent/>
                 <GolfBallPathComponent 
