@@ -30,14 +30,14 @@ function App() {
 
     var curveMagnitude = "";
     if (CPAngle < CFAngle) {
-      if (difference > 6) {
+      if (Math.abs(difference) > 6) {
         curveMagnitude = "slice";
       } else {
         curveMagnitude = "fade";
       }
       setBallCurveState(["less than", "out-to-in", "open", "left-to-right", "fade", "slice", curveMagnitude]);
     } else if (CPAngle > CFAngle) {
-      if (difference > 6) {
+      if (Math.abs(difference) > 6) {
         curveMagnitude = "hook";
       } else {
         curveMagnitude = "draw";
@@ -89,7 +89,7 @@ function App() {
               <div className="text-center text-xl mb-1 rounded">
                 Background
               </div>
-              <div className="text-justify mb-1">
+              <div className="text-justify px-1 mb-1">
                 {background}
               </div>
               <div className="text-center text-xl mb-1 rounded">
@@ -124,7 +124,7 @@ function App() {
               <div className="text-center text-xl my-1 rounded">
                 Understanding the Ball Flight
               </div>
-              <div className="text-justify mb-1">
+              <div className="text-justify px-1 mb-1">
               <DescriptionComponent
                 ballCurve={ballCurve}
                 clubPathDirection={clubPathDirection}
