@@ -13,6 +13,12 @@ import DescriptionComponent from './DescriptionComponent';
 
 function App() {
 
+  const background = "In the diagram, the target is straight, at 0° Club Path Angle. When using the toggles, " 
+    + "a negative angle means pointing to the left more, and a positive angle means pointing to the right. "
+    + "Club Path Angle is the direction of your swing in relation to the target. Club Face Angle is the direction of the "
+    + "actual club face in relation to the target. The simulation is created assuming you are an amateur right-handed golfer, "
+    + "carrying a driver about 250 yards. The results are estimates intended for conveying an idea and educating, not actuals.";
+
   const [clubFaceAngleSliderValue, setClubFaceAngleSliderState] = useState(0.0);
   const [clubPathAngleSliderValue, setClubPathAngleSliderState] = useState(0.0);
   const [ballCurve, setBallCurveState] = useState([]);
@@ -64,15 +70,15 @@ function App() {
 
   return (
       <div>
-        <nav class="navbar navbar-expand-lg navbar-default border-bottom border-2 border-dark">
-          <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">Golf Swing Simulator</span>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-lg navbar-default border-bottom border-2 border-dark">
+          <div className="container-fluid">
+            <span className="navbar-brand mb-0 h1">Golf Swing Simulator</span>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <div class="navbar-nav">
-                <a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfR6vP8GLaPvjIRF9qY8NDl5em_JxNO10pJcJrR03tU-B0YIw/viewform">Feedback</a>
+            <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <div className="navbar-nav">
+                <a className="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfR6vP8GLaPvjIRF9qY8NDl5em_JxNO10pJcJrR03tU-B0YIw/viewform">Feedback</a>
               </div>
             </div>
           </div>
@@ -80,6 +86,12 @@ function App() {
         <div className="container-fluid mt-2">
           <div className="row">
             <div className="col-sm">
+              <div className="text-center text-xl mb-1 rounded">
+                Background
+              </div>
+              <div className="text-justify mb-1">
+                {background}
+              </div>
               <div className="text-center text-xl mb-1 rounded">
                 Golf Swing Toggles
               </div>
@@ -109,17 +121,17 @@ function App() {
                 defaultValue={100} 
                 units={"miles per hour"}
               /> */}
-               <div className="text-center text-xl my-1 rounded">
-                What is Happening Here?
+              <div className="text-center text-xl my-1 rounded">
+                Understanding the Ball Flight
               </div>
-              <div className="text-justify border border-2 mb-1">
+              <div className="text-justify mb-1">
               <DescriptionComponent
                 ballCurve={ballCurve}
                 clubPathDirection={clubPathDirection}
               />
               </div>
             </div>
-            <div class="col-sm-8">
+            <div className="col-xl-8">
               <div className="golf-visual-container">
                 <GolfRangeComponent/>
                 <GolfBallPathComponent 
