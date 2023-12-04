@@ -34,10 +34,7 @@ function DescriptionComponent(props) {
 
     return (
         <div>
-            <strong>Background: </strong>{background}
-            <br/>
-            <br/>
-            <strong>Result: </strong>{clubPathDirectionDescription}{ballCurveDescription}
+            {clubPathDirectionDescription}{ballCurveDescription}
         </div>
     );
 };
