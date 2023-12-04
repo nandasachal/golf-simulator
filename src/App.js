@@ -64,15 +64,15 @@ function App() {
 
   return (
       <div>
-        <nav class="navbar navbar-expand-lg navbar-default border-bottom border-2 border-dark">
-          <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">Golf Swing Simulator</span>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-lg navbar-default border-bottom border-2 border-dark">
+          <div className="container-fluid">
+            <span className="navbar-brand mb-0 h1">Golf Swing Simulator</span>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <div class="navbar-nav">
-                <a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfR6vP8GLaPvjIRF9qY8NDl5em_JxNO10pJcJrR03tU-B0YIw/viewform">Feedback</a>
+            <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <div className="navbar-nav">
+                <a className="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfR6vP8GLaPvjIRF9qY8NDl5em_JxNO10pJcJrR03tU-B0YIw/viewform">Feedback</a>
               </div>
             </div>
           </div>
@@ -119,7 +119,7 @@ function App() {
               />
               </div>
             </div>
-            <div class="col-sm-8">
+            <div className="col-sm-8">
               <div className="golf-visual-container">
                 <GolfRangeComponent/>
                 <GolfBallPathComponent 

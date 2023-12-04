@@ -84,7 +84,7 @@ function GolfRangeComponent(props) {
         <img 
             src={pathVisual} 
             alt="Golf Range" 
-            class="golf-ball-path"
+            className="golf-ball-path"
             style={transformStyle}
         />
         </div>
