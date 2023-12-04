@@ -13,6 +13,31 @@
   }
 }
 
+.golf-visual-container {
+  position: relative;
+}
+
+.golf-range,
+.golf-ball-path {
+  position: absolute; /* Position both SVGs absolutely within the container */
+  top: 0; /* Adjust top position as needed */
+  left: 0; /* Adjust left position as needed */
+}
+
+.golf-ball-path {
+  z-index: 1; /* Ensure SVG2 appears above SVG1 */
+}
+
+.text-xl {
+  font-size: 1.2rem; /* Ensure SVG2 appears above SVG1 */
+  color:white;
+  background-color: black;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
