@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import React, { useState } from "react";
 
 function SliderVariable(props) {
   // const [sliderValue, setSliderValue] = useState(defaultValue);
@@ -20,12 +18,24 @@ function SliderVariable(props) {
       console.log("CHANGING CLUB PATH");
       props.onClubPathChange(event.target.value);
     }
-  }
+  };
 
   return (
     <div class="text-center my-2 px-5">
-      <label for="customRange1" className="form-label">{props.name} ({sliderValue}{props.units}) </label>
-      <input type="range" className="form-range" min={props.minValue} max={props.maxValue} step={props.steps} id="customRange1" value={sliderValue} onChange={handleSliderChange}/>
+      <label for="customRange1" className="form-label">
+        {props.name} ({sliderValue}
+        {props.units}){" "}
+      </label>
+      <input
+        type="range"
+        className="form-range"
+        min={props.minValue}
+        max={props.maxValue}
+        step={props.steps}
+        id="customRange1"
+        value={sliderValue}
+        onChange={handleSliderChange}
+      />
     </div>
   );
 }
