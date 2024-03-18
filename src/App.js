@@ -8,6 +8,8 @@ import Navbar from "./components/navbar";
 import FloatingFeedbackButton from "./components/common/floating-feedback-button";
 import ParameterSelection from "./components/simulator/parameter-selection";
 import { useQueryState } from "./hooks/use-query";
+import ButtonRow from "./components/simulator/button-row";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   // const background =
@@ -114,6 +116,10 @@ function App() {
 
   return (
     <div className="relative ">
+      <div>
+        <Toaster />
+      </div>
+
       <Navbar />
       <div className="max-w-[1400px] mx-auto px-6 mt-2">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -136,6 +142,8 @@ function App() {
               handleClubFaceAngleSliderChange={handleClubFaceAngleSliderChange}
               handleClubPathAngleSliderChange={handleClubPathAngleSliderChange}
             />
+
+            <ButtonRow />
 
             {/* <div className="text-center text-xl my-1 rounded">
               Understanding the Ball Flight
