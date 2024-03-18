@@ -17,12 +17,12 @@ function GolfRangeComponent(props) {
   const CPAngle = parseInt(props.clubPathAngle);
   const CFAngle = parseInt(props.clubFaceAngle);
 
-  console.log("clubFaceAngle: " + CFAngle);
-  console.log("clubPathAngle: " + CPAngle);
+  // console.log("clubFaceAngle: " + CFAngle);
+  // console.log("clubPathAngle: " + CPAngle);
 
   var difference = CPAngle - CFAngle;
 
-  console.log(difference);
+  // console.log(difference);
   if (difference === 0) {
     var pathVisual = golfBallPath_0_0_v2;
   } else if (CPAngle === 0) {
@@ -79,7 +79,7 @@ function GolfRangeComponent(props) {
       <img
         src={pathVisual}
         alt="Golf Range"
-        class="golf-ball-path"
+        className="golf-ball-path"
         style={transformStyle}
       />
     </div>

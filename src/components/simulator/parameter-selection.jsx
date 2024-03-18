@@ -40,7 +40,8 @@ const ParameterSelection = ({ values, handleValueChange }) => {
         steps={1}
         defaultValue={0}
         units={"°"}
-        onClubFaceChange={(value) => {
+        value={values.clubFaceAngleSliderValue}
+        handleValueChange={(value) => {
           handleValueChange("clubFaceAngle", value);
         }}
       />
@@ -51,7 +52,8 @@ const ParameterSelection = ({ values, handleValueChange }) => {
         steps={1}
         defaultValue={0}
         units={"°"}
-        onClubPathChange={(value) => {
+        value={values.clubPathAngleSliderValue}
+        handleValueChange={(value) => {
           handleValueChange("clubPathAngle", value);
         }}
       />
@@ -61,7 +63,11 @@ const ParameterSelection = ({ values, handleValueChange }) => {
         maxValue={180}
         steps={1}
         defaultValue={140}
+        value={values.swingSpeedSliderValue}
         units={"miles per hour"}
+        handleValueChange={(value) => {
+          handleValueChange("swingSpeed", value);
+        }}
       />
     </>
   );

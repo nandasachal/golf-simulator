@@ -7,6 +7,7 @@ import GolfBallPathComponent from "./components/old/GolfBallPathComponent";
 import Navbar from "./components/navbar";
 import FloatingFeedbackButton from "./components/common/floating-feedback-button";
 import ParameterSelection from "./components/simulator/parameter-selection";
+import { useQueryState } from "./hooks/use-query";
 
 function App() {
   // const background =
@@ -16,10 +17,28 @@ function App() {
   //   "actual club face in relation to the target. The simulation is created assuming you are an amateur right-handed golfer, " +
   //   "carrying a driver about 250 yards. The results are estimates intended for conveying an idea and educating, not actuals.";
 
-  const [side, setSide] = useState("Left");
-  const [clubFaceAngleSliderValue, setClubFaceAngleSliderState] = useState(0.0);
-  const [clubPathAngleSliderValue, setClubPathAngleSliderState] = useState(0.0);
-  const [swingSpeedSliderValue, setSwingSpeedSliderState] = useState(140.0);
+  // const [side, setSide] = useState("Left");
+  // const [clubFaceAngleSliderValue, setClubFaceAngleSliderState] = useState(0.0);
+  // const [clubPathAngleSliderValue, setClubPathAngleSliderState] = useState(0.0);
+  // const [swingSpeedSliderValue, setSwingSpeedSliderState] = useState(140.0);
+
+  const [side, setSide] = useQueryState("side", "Left", false);
+  const [clubFaceAngleSliderValue, setClubFaceAngleSliderState] = useQueryState(
+    "face",
+    0.0,
+    true
+  );
+  const [clubPathAngleSliderValue, setClubPathAngleSliderState] = useQueryState(
+    "path",
+    0.0,
+    true
+  );
+  const [swingSpeedSliderValue, setSwingSpeedSliderState] = useQueryState(
+    "speed",
+    140.0,
+    true
+  );
+
   // const [ballCurve, setBallCurveState] = useState([]);
   // const [clubPathDirection, setClubPathDirectionState] = useState("straight");
 
