@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.scss";
 import GolfRangeComponent from "./components/old/GolfRangeComponent";
 import GolfBallPathComponent from "./components/old/GolfBallPathComponent";
@@ -10,6 +10,7 @@ import ParameterSelection from "./components/simulator/parameter-selection";
 import { useQueryState } from "./hooks/use-query";
 import ButtonRow from "./components/simulator/button-row";
 import { Toaster } from "react-hot-toast";
+import { Tooltip } from "react-tooltip";
 
 function App() {
   // const background =
@@ -118,6 +119,7 @@ function App() {
     <div className="relative ">
       <div>
         <Toaster />
+        <Tooltip id="main-tooltip" style={{ maxWidth: "300px" }} />
       </div>
 
       <Navbar />

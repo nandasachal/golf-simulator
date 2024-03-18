@@ -1,4 +1,5 @@
 import React from "react";
+import { QuestionCircleFill } from "react-bootstrap-icons";
 
 function SliderVariable(props) {
   const handleSliderChange = (event) => {
@@ -10,6 +11,18 @@ function SliderVariable(props) {
       <p htmlFor="customRange1" className="font-bold">
         {props.name} ({props.value}
         {props.units}){" "}
+        {props.tooltipText && (
+          <span
+            data-tooltip-id="main-tooltip"
+            data-tooltip-content={props.tooltipText}
+            className="cursor-pointer"
+          >
+            <QuestionCircleFill
+              size={15}
+              className="text-gray-500 ml-1 inline"
+            />
+          </span>
+        )}
       </p>
       <input
         type="range"

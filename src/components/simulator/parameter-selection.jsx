@@ -44,6 +44,7 @@ const ParameterSelection = ({ values, handleValueChange }) => {
         handleValueChange={(value) => {
           handleValueChange("clubFaceAngle", value);
         }}
+        tooltipText="The angle of your club head, where negative is a closed club face and a positive is a open club face."
       />
       <SliderVariable
         name={"Club Path Angle"}
@@ -56,6 +57,11 @@ const ParameterSelection = ({ values, handleValueChange }) => {
         handleValueChange={(value) => {
           handleValueChange("clubPathAngle", value);
         }}
+        tooltipText={
+          values.side === "Right"
+            ? "The direction you are swinging in relation to the straight line, where negative is pointing left and positive is pointing right."
+            : "The direction you are swinging in relation to the straight line, where negative is pointing right and positive is pointing left."
+        }
       />
       <SliderVariable
         name={"Swing Speed"}
@@ -68,6 +74,7 @@ const ParameterSelection = ({ values, handleValueChange }) => {
         handleValueChange={(value) => {
           handleValueChange("swingSpeed", value);
         }}
+        tooltipText="The speed at which the ball is moving upon launch, where higher number mean hitting the ball further."
       />
     </>
   );
