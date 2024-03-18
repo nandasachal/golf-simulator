@@ -28,7 +28,11 @@ function GolfRangeComponent() {
         className="image-placeholder"
         style={{ paddingTop: `${aspectRatio}%` }}
       ></div>
-      <img src={golfRangeSvg} alt="Golf Range" className="golf-range rounded" />
+      <img
+        src={golfRangeSvg}
+        alt="Golf Range"
+        className="golf-range rounded-lg shadow-lg"
+      />
     </div>
   );
 }

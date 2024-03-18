@@ -1,24 +1,16 @@
-import React from "react";
-
-const Navbar = () => {
+export default function Example() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-default border-bottom border-2 border-dark">
-      <div className="container-fluid">
-        <span className="navbar-brand mb-0 h1">Golf Swing Simulator</span>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+    <div className="shadow-lg mb-6 bg-white">
+      <div className="mx-auto max-w-[1400px] flex items-center h-16  px-6 ">
+        <a className="flex items-center" href="/">
+          <img
+            src="/android-chrome-192x192.png"
+            alt="logo"
+            className="h-12 w-12 mr-2"
+          />
+          <p className="font-bold text-xl text-primary-600">Golf Simulator</p>
+        </a>
       </div>
-    </nav>
+    </div>
   );
-};
-
-export default Navbar;
+}

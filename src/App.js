@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+import "./App.scss";
 import GolfRangeComponent from "./components/old/GolfRangeComponent";
 import GolfBallPathComponent from "./components/old/GolfBallPathComponent";
 
@@ -16,8 +16,10 @@ function App() {
   //   "actual club face in relation to the target. The simulation is created assuming you are an amateur right-handed golfer, " +
   //   "carrying a driver about 250 yards. The results are estimates intended for conveying an idea and educating, not actuals.";
 
+  const [side, setSide] = useState("Left");
   const [clubFaceAngleSliderValue, setClubFaceAngleSliderState] = useState(0.0);
   const [clubPathAngleSliderValue, setClubPathAngleSliderState] = useState(0.0);
+  const [swingSpeedSliderValue, setSwingSpeedSliderState] = useState(140.0);
   // const [ballCurve, setBallCurveState] = useState([]);
   // const [clubPathDirection, setClubPathDirectionState] = useState("straight");
 
@@ -79,19 +81,39 @@ function App() {
     // updateDescription(parseInt(clubFaceAngleSliderValue), parseInt(newValue));
   };
 
+  const handleValueChange = (type, newValue) => {
+    if (type === "side") {
+      setSide(newValue);
+    } else if (type === "clubFaceAngle") {
+      setClubFaceAngleSliderState(newValue);
+    } else if (type === "clubPathAngle") {
+      setClubPathAngleSliderState(newValue);
+    } else if (type === "swingSpeed") {
+      setSwingSpeedSliderState(newValue);
+    }
+  };
+
   return (
-    <div className="relative">
+    <div className="relative ">
       <Navbar />
-      <div className="container-fluid mt-2">
-        <div className="row">
-          <div className="col-sm">
+      <div className="max-w-[1400px] mx-auto px-6 mt-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="p-4 border-gray-50 border shadow-lg rounded-lg bg-white h-fit order-last md:order-first">
             {/* <div className="text-center text-xl mb-1 rounded">Background</div>
             <div className="text-justify mb-1">{background}</div> */}
-            <div className="text-center text-xl mb-1 rounded">
+            <div className="text-center text-xl text-primary-600 mb-2 rounded-md font-bold py-2">
               Golf Swing Toggles
             </div>
+            <hr />
 
             <ParameterSelection
+              values={{
+                clubFaceAngleSliderValue,
+                clubPathAngleSliderValue,
+                swingSpeedSliderValue,
+                side,
+              }}
+              handleValueChange={handleValueChange}
               handleClubFaceAngleSliderChange={handleClubFaceAngleSliderChange}
               handleClubPathAngleSliderChange={handleClubPathAngleSliderChange}
             />
@@ -106,8 +128,8 @@ function App() {
               />
             </div> */}
           </div>
-          <div className="col-xl-8">
-            <div className="golf-visual-container">
+          <div className="md:col-span-2">
+            <div className="relative">
               <GolfRangeComponent />
               <GolfBallPathComponent
                 clubFaceAngle={clubFaceAngleSliderValue}

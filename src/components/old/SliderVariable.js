@@ -21,14 +21,14 @@ function SliderVariable(props) {
   };
 
   return (
-    <div class="text-center my-2 px-5">
-      <label for="customRange1" className="form-label">
+    <div class="my-2 w-full">
+      <p for="customRange1" className="font-bold">
         {props.name} ({sliderValue}
         {props.units}){" "}
-      </label>
+      </p>
       <input
         type="range"
-        className="form-range"
+        className="form-range cursor-pointer w-full"
         min={props.minValue}
         max={props.maxValue}
         step={props.steps}
