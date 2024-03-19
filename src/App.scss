@@ -1,0 +1,57 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.golf-range,
+.golf-ball-path {
+  position: absolute; /* Position both SVGs absolutely within the container */
+  top: 0; /* Adjust top position as needed */
+  left: 0; /* Adjust left position as needed */
+}
+
+.golf-ball-path {
+  z-index: 1; /* Ensure SVG2 appears above SVG1 */
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+input[type="range"] {
+  accent-color: #4c8435;
+}
