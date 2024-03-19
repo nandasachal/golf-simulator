@@ -2,6 +2,7 @@ import React from "react";
 import "./App.scss";
 import GolfRangeComponent from "./components/old/GolfRangeComponent";
 import GolfBallPathComponent from "./components/old/GolfBallPathComponent";
+import { useNavigate, useLocation } from "react-router-dom";
 
 // import DescriptionComponent from "./components/old/DescriptionComponent";
 import Navbar from "./components/navbar";
@@ -13,6 +14,8 @@ import { Toaster } from "react-hot-toast";
 import { Tooltip } from "react-tooltip";
 
 function App() {
+  const navigate = useNavigate();
+  const location = useLocation();
   // const background =
   //   "In the diagram, the target is straight, at 0° Club Path Angle. When using the toggles, " +
   //   "a negative angle means pointing to the left more, and a positive angle means pointing to the right. " +
@@ -115,6 +118,10 @@ function App() {
     }
   };
 
+  const handleReset = () => {
+    navigate(`${location.pathname?.split("?")[0]}`);
+  };
+
   return (
     <div className="relative ">
       <div>
@@ -145,7 +152,7 @@ function App() {
               handleClubPathAngleSliderChange={handleClubPathAngleSliderChange}
             />
 
-            <ButtonRow />
+            <ButtonRow handleReset={handleReset} />
 
             {/* <div className="text-center text-xl my-1 rounded">
               Understanding the Ball Flight

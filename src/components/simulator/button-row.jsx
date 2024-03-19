@@ -7,7 +7,7 @@ import {
 } from "react-bootstrap-icons";
 import toast from "react-hot-toast";
 
-const ButtonRow = () => {
+const ButtonRow = ({ handleReset }) => {
   const [isCopied, setIsCopied] = useState(false);
   const handleCopyURL = () => {
     const url = window.location.href;
@@ -50,7 +50,7 @@ const ButtonRow = () => {
         </button>
         <button
           className="bg-gray-200 text-red-500 px-6 py-2 rounded-lg font-semibold flex items-center justify-center disabled:opacity-50"
-          disabled
+          onClick={handleReset}
         >
           <ArrowCounterclockwise size={14} className="mr-1" />
           Reset
