@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.scss";
 import GolfRangeComponent from "./components/old/GolfRangeComponent";
 import GolfBallPathComponent from "./components/old/GolfBallPathComponent";
@@ -12,21 +12,11 @@ import { useQueryState } from "./hooks/use-query";
 import ButtonRow from "./components/simulator/button-row";
 import { Toaster } from "react-hot-toast";
 import { Tooltip } from "react-tooltip";
+import { StartBall } from "./simulate/main";
 
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
-  // const background =
-  //   "In the diagram, the target is straight, at 0° Club Path Angle. When using the toggles, " +
-  //   "a negative angle means pointing to the left more, and a positive angle means pointing to the right. " +
-  //   "Club Path Angle is the direction of your swing in relation to the target. Club Face Angle is the direction of the " +
-  //   "actual club face in relation to the target. The simulation is created assuming you are an amateur right-handed golfer, " +
-  //   "carrying a driver about 250 yards. The results are estimates intended for conveying an idea and educating, not actuals.";
-
-  // const [side, setSide] = useState("Left");
-  // const [clubFaceAngleSliderValue, setClubFaceAngleSliderState] = useState(0.0);
-  // const [clubPathAngleSliderValue, setClubPathAngleSliderState] = useState(0.0);
-  // const [swingSpeedSliderValue, setSwingSpeedSliderState] = useState(140.0);
 
   const [side, setSide] = useQueryState("side", "Left", false);
   const [clubFaceAngleSliderValue, setClubFaceAngleSliderState] = useQueryState(
@@ -45,65 +35,12 @@ function App() {
     true
   );
 
-  // const [ballCurve, setBallCurveState] = useState([]);
-  // const [clubPathDirection, setClubPathDirectionState] = useState("straight");
-
-  //Calculate description. Pass in integers
-  // const updateDescription = (CFAngle, CPAngle) => {
-  //   var difference = CPAngle - CFAngle;
-
-  //   var curveMagnitude = "";
-  //   if (CPAngle < CFAngle) {
-  //     if (difference > 6) {
-  //       curveMagnitude = "slice";
-  //     } else {
-  //       curveMagnitude = "fade";
-  //     }
-  //     setBallCurveState([
-  //       "less than",
-  //       "out-to-in",
-  //       "open",
-  //       "left-to-right",
-  //       "fade",
-  //       "slice",
-  //       curveMagnitude,
-  //     ]);
-  //   } else if (CPAngle > CFAngle) {
-  //     if (difference > 6) {
-  //       curveMagnitude = "hook";
-  //     } else {
-  //       curveMagnitude = "draw";
-  //     }
-  //     setBallCurveState([
-  //       "greater than",
-  //       "in-to-out",
-  //       "closed",
-  //       "right-to-left",
-  //       "draw",
-  //       "hook",
-  //       curveMagnitude,
-  //     ]);
-  //   } else {
-  //     setBallCurveState([]);
-  //   }
-
-  //   var pathDirection = "straight";
-  //   if (CPAngle < 0) {
-  //     pathDirection = "left";
-  //   } else if (CPAngle > 0) {
-  //     pathDirection = "right";
-  //   }
-  //   setClubPathDirectionState(pathDirection);
-  // };
-
   const handleClubFaceAngleSliderChange = (newValue) => {
     setClubFaceAngleSliderState(newValue);
-    // updateDescription(parseInt(newValue), parseInt(clubPathAngleSliderValue));
   };
 
   const handleClubPathAngleSliderChange = (newValue) => {
     setClubPathAngleSliderState(newValue);
-    // updateDescription(parseInt(clubFaceAngleSliderValue), parseInt(newValue));
   };
 
   const handleValueChange = (type, newValue) => {
@@ -121,6 +58,12 @@ function App() {
   const handleReset = () => {
     navigate(`${location.pathname?.split("?")[0]}`);
   };
+
+  useEffect(() => {
+    if (window.THREE) {
+      StartBall(window.THREE);
+    }
+  }, []);
 
   return (
     <div className="relative ">
@@ -171,6 +114,19 @@ function App() {
                 clubFaceAngle={clubFaceAngleSliderValue}
                 clubPathAngle={clubPathAngleSliderValue}
               />
+            </div>
+          </div>
+        </div>
+        <div className="min-h-[500px]">
+          <div id="display-container">
+            <div id="status-display">
+              <ul>
+                <li id="status-time"></li>
+                <li id="status-distance"></li>
+                <li id="status-speed"></li>
+                <li id="status-height"></li>
+                <li id="status-spin"></li>
+              </ul>
             </div>
           </div>
         </div>

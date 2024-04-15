@@ -1,4 +1,4 @@
-import * as THREE from "three";
+import THREE from "../../lib/three";
 import React, { useEffect } from "react";
 
 function AnimationComponent(props) {
