@@ -14,6 +14,7 @@ import { Toaster } from "react-hot-toast";
 import { Tooltip } from "react-tooltip";
 import { StartBall } from "./simulate/main";
 
+let shot = null;
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -61,9 +62,15 @@ function App() {
 
   useEffect(() => {
     if (window.THREE) {
-      StartBall(window.THREE);
+      shot = StartBall(window.THREE);
     }
   }, []);
+
+  const handleClick = () => {
+    if (shot) {
+      shot.beginShot();
+    }
+  };
 
   return (
     <div className="relative ">
@@ -95,7 +102,7 @@ function App() {
               handleClubPathAngleSliderChange={handleClubPathAngleSliderChange}
             />
 
-            <ButtonRow handleReset={handleReset} />
+            <ButtonRow handleReset={handleReset} simulate={handleClick} />
 
             {/* <div className="text-center text-xl my-1 rounded">
               Understanding the Ball Flight
@@ -108,25 +115,26 @@ function App() {
             </div> */}
           </div>
           <div className="md:col-span-2">
-            <div className="relative">
+            {/* <div className="relative">
               <GolfRangeComponent />
               <GolfBallPathComponent
                 clubFaceAngle={clubFaceAngleSliderValue}
                 clubPathAngle={clubPathAngleSliderValue}
               />
-            </div>
-          </div>
-        </div>
-        <div className="min-h-[500px]">
-          <div id="display-container">
-            <div id="status-display">
-              <ul>
-                <li id="status-time"></li>
-                <li id="status-distance"></li>
-                <li id="status-speed"></li>
-                <li id="status-height"></li>
-                <li id="status-spin"></li>
-              </ul>
+            </div> */}
+            <div className="min-h-[500px]">
+              <div id="display-container">
+                <div id="status-display">
+                  <canvas id="golf-course" className="min-h-[500px]"></canvas>
+                  <ul className="hidden">
+                    <li id="status-time"></li>
+                    <li id="status-distance"></li>
+                    <li id="status-speed"></li>
+                    <li id="status-height"></li>
+                    <li id="status-spin"></li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>

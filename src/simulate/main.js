@@ -98,7 +98,6 @@ export const StartBall = (THREE) => {
 
   function animate() {
     requestAnimationFrame(animate);
-    console.log({ controls, stats, renderer });
 
     controls.update();
     // stats.update();
@@ -248,4 +247,8 @@ export const StartBall = (THREE) => {
   // begin
   init();
   animate();
+
+  return {
+    beginShot,
+  };
 };
