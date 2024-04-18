@@ -186,7 +186,7 @@ export const StartBall = (THREE) => {
 
   function beginShot() {
     points = [];
-    shot = new Shot(shotControl);
+    shot = new Shot(shotControl, THREE);
     points.push(shot.points[0]);
     displaySpeed = shotControl.displaySpeed;
     displayStartTime = Date.now();
