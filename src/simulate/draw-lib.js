@@ -55,7 +55,7 @@ DrawLib.getBallParticles = function (THREE, points) {
   var geometry = new THREE.Geometry();
   geometry.vertices = points;
 
-  var sprite = THREE.ImageUtils.loadTexture("./assets/images/ball.png");
+  var sprite = THREE.ImageUtils.loadTexture("./ball.png");
   var material = new THREE.ParticleSystemMaterial({
     size: 1,
     sizeAttenuation: true,
