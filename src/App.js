@@ -125,7 +125,10 @@ function App() {
             <div className="min-h-[500px]">
               <div id="display-container">
                 <div id="status-display">
-                  <canvas id="golf-course" className="min-h-[500px]"></canvas>
+                  <canvas
+                    id="golf-course"
+                    className="min-h-[500px] bg-white"
+                  ></canvas>
                   <ul className="hidden">
                     <li id="status-time"></li>
                     <li id="status-distance"></li>
