@@ -73,7 +73,7 @@ function App() {
   };
 
   return (
-    <div className="relative ">
+    <div className="relative pb-20">
       <div>
         <Toaster />
         <Tooltip id="main-tooltip" style={{ maxWidth: "300px" }} />
