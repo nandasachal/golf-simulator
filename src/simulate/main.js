@@ -77,15 +77,15 @@ export const StartBall = (THREE) => {
     controls = new THREE.OrbitControls(camera, renderer.domElement);
 
     // add dat.gui
-    gui = new dat.GUI({ autoPlace: false });
-    container.appendChild(gui.domElement);
-    gui.add(shotControl, "initSpeedMPH", 50, 150);
-    gui.add(shotControl, "initVerticalAngleDegrees", 0, 90);
-    gui.add(shotControl, "initHorizontalAngleDegrees", -45, 45);
-    gui.add(shotControl, "initBackspinRPM", 0, 6000);
-    gui.add(shotControl, "initSpinAngle", -45, 45);
-    gui.add(shotControl, "displaySpeed", 0, 5);
-    gui.add(shotControl, "shoot");
+    // gui = new dat.GUI({ autoPlace: false });
+    // container.appendChild(gui.domElement);
+    // gui.add(shotControl, "initSpeedMPH", 50, 150);
+    // gui.add(shotControl, "initVerticalAngleDegrees", 0, 90);
+    // gui.add(shotControl, "initHorizontalAngleDegrees", -45, 45);
+    // gui.add(shotControl, "initBackspinRPM", 0, 6000);
+    // gui.add(shotControl, "initSpinAngle", -45, 45);
+    // gui.add(shotControl, "displaySpeed", 0, 5);
+    // gui.add(shotControl, "shoot");
 
     // window sizing
     onWindowResize(); // set initial size

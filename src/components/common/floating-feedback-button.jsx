@@ -1,5 +1,5 @@
 import React from "react";
-import { PencilSquare } from "react-bootstrap-icons";
+import { Question } from "react-bootstrap-icons";
 
 const FloatingFeedbackButton = () => {
   return (
@@ -9,7 +9,7 @@ const FloatingFeedbackButton = () => {
       target="_blank"
       rel="noreferrer"
     >
-      <PencilSquare size={20} color="#444" />
+      <Question size={30} color="#444" />
     </a>
   );
 };
