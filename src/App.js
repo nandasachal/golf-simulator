@@ -19,7 +19,7 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [side, setSide] = useQueryState("side", "Left", false);
+  const [side, setSide] = useQueryState("side", "Right", false);
   // InitHorizontalAngle
   const [clubFaceAngleSliderValue, setClubFaceAngleSliderState] = useQueryState(
     "face",
@@ -67,8 +67,9 @@ function App() {
     if (window.THREE) {
       shot = StartBall(window.THREE, {
         initSpeedMPH: swingSpeedSliderValue,
-        initHorizontalAngleDegrees: clubFaceAngleSliderValue,
-        initSpinAngle: clubPathAngleSliderValue,
+        initHorizontalAngleDegrees:
+          clubFaceAngleSliderValue * (side === "Left" ? -1 : 1),
+        initSpinAngle: clubPathAngleSliderValue * (side === "Left" ? -1 : 1),
       });
     }
   }, []);
@@ -76,8 +77,10 @@ function App() {
   const handleClick = () => {
     if (shot) {
       shot.shotControl.initSpeedMPH = swingSpeedSliderValue;
-      shot.shotControl.initHorizontalAngleDegrees = clubFaceAngleSliderValue;
-      shot.shotControl.initSpinAngle = clubPathAngleSliderValue;
+      shot.shotControl.initHorizontalAngleDegrees =
+        clubFaceAngleSliderValue * (side === "Left" ? -1 : 1);
+      shot.shotControl.initSpinAngle =
+        clubPathAngleSliderValue * (side === "Left" ? -1 : 1);
       shot.beginShot();
     }
   };
