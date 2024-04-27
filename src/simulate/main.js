@@ -3,7 +3,7 @@ import DrawLib from "./draw-lib";
 import { Shot } from "./shot";
 import { toMPH, toRPM, toYards } from "./conversions-lib";
 
-export const StartBall = (THREE) => {
+export const StartBall = (THREE, options) => {
   // Note: coordinate unit of 1 = 1 meter
 
   // three framework components
@@ -24,12 +24,12 @@ export const StartBall = (THREE) => {
   var particles;
   var shotControl = {
     dt: 0.001, //seconds
-    displaySpeed: 1.0, // display time multiplier
-    initSpeedMPH: 100,
-    initVerticalAngleDegrees: 22,
-    initHorizontalAngleDegrees: 9,
+    displaySpeed: 2.0, // display time multiplier
+    initSpeedMPH: options?.initSpeedMPH ?? 100,
+    initVerticalAngleDegrees: 20,
+    initHorizontalAngleDegrees: options?.initHorizontalAngleDegrees ?? 9,
     initBackspinRPM: 6000,
-    initSpinAngle: 45,
+    initSpinAngle: options?.initSpinAngle ?? 45,
     shoot: beginShot,
   };
   var sceneZOffset;
@@ -44,6 +44,7 @@ export const StartBall = (THREE) => {
   function init() {
     // add renderer
     renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setClearColor(0xffffff);
 
     // add container
     container = document.getElementById("display-container");
@@ -215,7 +216,7 @@ export const StartBall = (THREE) => {
     var rawTimeElapsed = now - displayStartTime;
     var displayTimeElapsed = Math.floor(displaySpeed * rawTimeElapsed);
     var initPoint = new THREE.Vector3(0, 0, sceneZOffset);
-    var lineColor = new THREE.Color(0xffff00);
+    var lineColor = new THREE.Color(0x0000ff);
     var splineInterpolationNum = 2;
 
     if (displayTimeElapsed <= shot.points.length) {
@@ -266,5 +267,6 @@ export const StartBall = (THREE) => {
 
   return {
     beginShot,
+    shotControl,
   };
 };

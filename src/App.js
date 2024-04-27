@@ -20,19 +20,22 @@ function App() {
   const location = useLocation();
 
   const [side, setSide] = useQueryState("side", "Left", false);
+  // InitHorizontalAngle
   const [clubFaceAngleSliderValue, setClubFaceAngleSliderState] = useQueryState(
     "face",
     0.0,
     true
   );
+  // InitSpinAngle
   const [clubPathAngleSliderValue, setClubPathAngleSliderState] = useQueryState(
     "path",
     0.0,
     true
   );
+  // InitSpeedMPH
   const [swingSpeedSliderValue, setSwingSpeedSliderState] = useQueryState(
     "speed",
-    140.0,
+    80.0,
     true
   );
 
@@ -62,12 +65,19 @@ function App() {
 
   useEffect(() => {
     if (window.THREE) {
-      shot = StartBall(window.THREE);
+      shot = StartBall(window.THREE, {
+        initSpeedMPH: swingSpeedSliderValue,
+        initHorizontalAngleDegrees: clubFaceAngleSliderValue,
+        initSpinAngle: clubPathAngleSliderValue,
+      });
     }
   }, []);
 
   const handleClick = () => {
     if (shot) {
+      shot.shotControl.initSpeedMPH = swingSpeedSliderValue;
+      shot.shotControl.initHorizontalAngleDegrees = clubFaceAngleSliderValue;
+      shot.shotControl.initSpinAngle = clubPathAngleSliderValue;
       shot.beginShot();
     }
   };
