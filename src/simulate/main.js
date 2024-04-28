@@ -3,7 +3,7 @@ import DrawLib from "./draw-lib";
 import { Shot } from "./shot";
 import { toMPH, toRPM, toYards } from "./conversions-lib";
 
-export const StartBall = (THREE) => {
+export const StartBall = (THREE, options) => {
   // Note: coordinate unit of 1 = 1 meter
 
   // three framework components
@@ -24,12 +24,12 @@ export const StartBall = (THREE) => {
   var particles;
   var shotControl = {
     dt: 0.001, //seconds
-    displaySpeed: 1.0, // display time multiplier
-    initSpeedMPH: 100,
-    initVerticalAngleDegrees: 22,
-    initHorizontalAngleDegrees: 9,
+    displaySpeed: 2.0, // display time multiplier
+    initSpeedMPH: options?.initSpeedMPH ?? 100,
+    initVerticalAngleDegrees: 20,
+    initHorizontalAngleDegrees: options?.initHorizontalAngleDegrees ?? 9,
     initBackspinRPM: 6000,
-    initSpinAngle: 45,
+    initSpinAngle: options?.initSpinAngle ?? 45,
     shoot: beginShot,
   };
   var sceneZOffset;
@@ -44,6 +44,7 @@ export const StartBall = (THREE) => {
   function init() {
     // add renderer
     renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setClearColor(0xffffff);
 
     // add container
     container = document.getElementById("display-container");
@@ -77,15 +78,15 @@ export const StartBall = (THREE) => {
     controls = new THREE.OrbitControls(camera, renderer.domElement);
 
     // add dat.gui
-    gui = new dat.GUI({ autoPlace: false });
-    container.appendChild(gui.domElement);
-    gui.add(shotControl, "initSpeedMPH", 50, 150);
-    gui.add(shotControl, "initVerticalAngleDegrees", 0, 90);
-    gui.add(shotControl, "initHorizontalAngleDegrees", -45, 45);
-    gui.add(shotControl, "initBackspinRPM", 0, 6000);
-    gui.add(shotControl, "initSpinAngle", -45, 45);
-    gui.add(shotControl, "displaySpeed", 0, 5);
-    gui.add(shotControl, "shoot");
+    // gui = new dat.GUI({ autoPlace: false });
+    // container.appendChild(gui.domElement);
+    // gui.add(shotControl, "initSpeedMPH", 50, 150);
+    // gui.add(shotControl, "initVerticalAngleDegrees", 0, 90);
+    // gui.add(shotControl, "initHorizontalAngleDegrees", -45, 45);
+    // gui.add(shotControl, "initBackspinRPM", 0, 6000);
+    // gui.add(shotControl, "initSpinAngle", -45, 45);
+    // gui.add(shotControl, "displaySpeed", 0, 5);
+    // gui.add(shotControl, "shoot");
 
     // window sizing
     onWindowResize(); // set initial size
@@ -129,13 +130,29 @@ export const StartBall = (THREE) => {
 
     // adjust camera position
     camera.position.x = 0;
-    camera.position.y = 20;
-    camera.position.z = (-gridHeight / 2.0) * 1.3;
+    camera.position.y = 50;
+    camera.position.z = (-gridHeight / 2.0) * 1.6;
 
     // add ground grid
-    var gridColor = new THREE.Color(0x69ba6d);
+    var gridColor = new THREE.Color(0x00bbbb);
     var grid = DrawLib.getGrid(THREE, gridWidth, gridHeight, 10, gridColor);
     grid.position.z = sceneZOffset + gridHeight / 2.0;
+
+    var gridGeometry = new THREE.PlaneGeometry(
+      gridWidth,
+      gridHeight,
+      gridWidth / 10,
+      gridHeight / 10
+    );
+    var cellColor = new THREE.Color(0x4c8435); // Green color for cells
+    var gridMaterial = new THREE.MeshBasicMaterial({
+      color: cellColor,
+      side: THREE.DoubleSide,
+    });
+    var gridMesh = new THREE.Mesh(gridGeometry, gridMaterial);
+    gridMesh.rotation.x = -Math.PI / 2; // Rotate the grid to align with the scene
+    scene.add(gridMesh);
+
     scene.add(grid);
 
     // add marker indicators
@@ -199,7 +216,7 @@ export const StartBall = (THREE) => {
     var rawTimeElapsed = now - displayStartTime;
     var displayTimeElapsed = Math.floor(displaySpeed * rawTimeElapsed);
     var initPoint = new THREE.Vector3(0, 0, sceneZOffset);
-    var lineColor = new THREE.Color(0xe34f4f);
+    var lineColor = new THREE.Color(0x0000ff);
     var splineInterpolationNum = 2;
 
     if (displayTimeElapsed <= shot.points.length) {
@@ -250,5 +267,6 @@ export const StartBall = (THREE) => {
 
   return {
     beginShot,
+    shotControl,
   };
 };

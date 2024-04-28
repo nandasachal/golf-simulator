@@ -19,20 +19,23 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [side, setSide] = useQueryState("side", "Left", false);
+  const [side, setSide] = useQueryState("side", "Right", false);
+  // InitHorizontalAngle
   const [clubFaceAngleSliderValue, setClubFaceAngleSliderState] = useQueryState(
     "face",
     0.0,
     true
   );
+  // InitSpinAngle
   const [clubPathAngleSliderValue, setClubPathAngleSliderState] = useQueryState(
     "path",
     0.0,
     true
   );
+  // InitSpeedMPH
   const [swingSpeedSliderValue, setSwingSpeedSliderState] = useQueryState(
     "speed",
-    140.0,
+    80.0,
     true
   );
 
@@ -62,18 +65,28 @@ function App() {
 
   useEffect(() => {
     if (window.THREE) {
-      shot = StartBall(window.THREE);
+      shot = StartBall(window.THREE, {
+        initSpeedMPH: swingSpeedSliderValue,
+        initHorizontalAngleDegrees:
+          clubFaceAngleSliderValue * (side === "Left" ? -1 : 1),
+        initSpinAngle: clubPathAngleSliderValue * (side === "Left" ? -1 : 1),
+      });
     }
   }, []);
 
   const handleClick = () => {
     if (shot) {
+      shot.shotControl.initSpeedMPH = swingSpeedSliderValue;
+      shot.shotControl.initHorizontalAngleDegrees =
+        clubFaceAngleSliderValue * (side === "Left" ? -1 : 1);
+      shot.shotControl.initSpinAngle =
+        clubPathAngleSliderValue * (side === "Left" ? -1 : 1);
       shot.beginShot();
     }
   };
 
   return (
-    <div className="relative ">
+    <div className="relative pb-20">
       <div>
         <Toaster />
         <Tooltip id="main-tooltip" style={{ maxWidth: "300px" }} />
@@ -125,7 +138,10 @@ function App() {
             <div className="min-h-[500px]">
               <div id="display-container">
                 <div id="status-display">
-                  <canvas id="golf-course" className="min-h-[500px]"></canvas>
+                  <canvas
+                    id="golf-course"
+                    className="min-h-[500px] bg-white"
+                  ></canvas>
                   <ul className="hidden">
                     <li id="status-time"></li>
                     <li id="status-distance"></li>

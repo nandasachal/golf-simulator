@@ -35,8 +35,8 @@ const ParameterSelection = ({ values, handleValueChange }) => {
 
       <SliderVariable
         name={"Club Face Angle"}
-        minValue={-6}
-        maxValue={6}
+        minValue={-45}
+        maxValue={45}
         steps={1}
         defaultValue={0}
         units={"°"}
@@ -48,8 +48,8 @@ const ParameterSelection = ({ values, handleValueChange }) => {
       />
       <SliderVariable
         name={"Club Path Angle"}
-        minValue={-6}
-        maxValue={6}
+        minValue={-45}
+        maxValue={45}
         steps={1}
         defaultValue={0}
         units={"°"}
@@ -65,8 +65,8 @@ const ParameterSelection = ({ values, handleValueChange }) => {
       />
       <SliderVariable
         name={"Swing Speed"}
-        minValue={100}
-        maxValue={180}
+        minValue={50}
+        maxValue={140}
         steps={1}
         defaultValue={140}
         value={values.swingSpeedSliderValue}

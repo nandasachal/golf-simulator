@@ -32862,6 +32862,8 @@ THREE.LensFlarePlugin = function () {
             );
             _renderer.setTexture(sprite.texture, 1);
 
+            _renderer.setClearColor(0xffffff);
+
             _gl.drawElements(_gl.TRIANGLES, 6, _gl.UNSIGNED_SHORT, 0);
           }
         }
