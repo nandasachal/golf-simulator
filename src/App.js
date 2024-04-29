@@ -13,6 +13,7 @@ import ButtonRow from "./components/simulator/button-row";
 import { Toaster } from "react-hot-toast";
 import { Tooltip } from "react-tooltip";
 import { StartBall } from "./simulate/main";
+import { WindowIcon } from "@heroicons/react/20/solid";
 
 let shot = null;
 function App() {
@@ -72,6 +73,8 @@ function App() {
         initSpinAngle: clubPathAngleSliderValue * (side === "Left" ? -1 : 1),
       });
     }
+    toggleZoom();
+    window.addEventListener("resize", toggleZoom);
   }, []);
 
   const handleClick = () => {
@@ -82,6 +85,16 @@ function App() {
       shot.shotControl.initSpinAngle =
         clubPathAngleSliderValue * (side === "Left" ? -1 : 1);
       shot.beginShot();
+    }
+  };
+
+  const toggleZoom = () => {
+    if (window.THREE && window.THREE.OrbitControls) {
+      if (window.innerWidth <= 768) {
+        window.gsZoomFeature = false;
+      } else {
+        window.gsZoomFeature = true;
+      }
     }
   };
 
