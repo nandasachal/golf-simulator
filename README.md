@@ -63,7 +63,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
+  git checkout -b gh-pages
+  git pull origin main
+  yarn build
+  cp -r build/* .
+
+  git add .
+  git commit -m "deploy"
+  git push origin gh-pages
+```
 
 ### `npm run build` fails to minify
 

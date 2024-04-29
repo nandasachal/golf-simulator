@@ -108,7 +108,7 @@ function App() {
       <Navbar />
       <div className="max-w-[1400px] mx-auto px-6 mt-2">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-4 border-gray-50 border shadow-lg rounded-lg bg-white h-fit order-last md:order-first">
+          <div className="p-4 border-gray-50 border shadow-lg rounded-lg bg-white order-last md:order-first h-full flex flex-col justify-between">
             {/* <div className="text-center text-xl mb-1 rounded">Background</div>
             <div className="text-justify mb-1">{background}</div> */}
             <div className="text-center text-xl text-primary-600 mb-2 rounded-md font-bold py-2">
@@ -153,7 +153,7 @@ function App() {
                 <div id="status-display">
                   <canvas
                     id="golf-course"
-                    className="min-h-[500px] bg-white"
+                    className="min-h-[500px] bg-white shadow-lg rounded-lg"
                   ></canvas>
                   <ul className="hidden">
                     <li id="status-time"></li>
