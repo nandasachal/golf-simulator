@@ -61,7 +61,7 @@ THREE.OrbitControls = function (object, domElement) {
 
   var phiDelta = 0;
   var thetaDelta = 0;
-  var scale = 1;
+  var scale = 0.95;
 
   var lastPosition = new THREE.Vector3();
 
@@ -267,6 +267,7 @@ THREE.OrbitControls = function (object, domElement) {
   function onMouseWheel(event) {
     if (scope.enabled === false) return;
     if (scope.userZoom === false) return;
+    if (window.gsZoomFeature === false) return;
 
     var delta = 0;
 
