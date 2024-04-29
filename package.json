@@ -23,7 +23,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
+<<<<<<< HEAD
     "build": "react-scripts build && ncp public/lib build/lib",
+=======
+    "build": "react-scripts build --output-path docs",
+>>>>>>> 781e78dd60d2194ba9915f175ae0705e536271d9
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
