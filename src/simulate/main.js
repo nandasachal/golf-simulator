@@ -123,14 +123,14 @@ export const StartBall = (THREE, options) => {
   }
 
   function addInitialElements() {
-    var gridWidth = 60;
-    var gridHeight = 300;
+    var gridWidth = 70;
+    var gridHeight = 400;
 
     sceneZOffset = -gridHeight / 2.0;
 
     // adjust camera position
     camera.position.x = 0;
-    camera.position.y = 50;
+    camera.position.y = 70;
     camera.position.z = (-gridHeight / 2.0) * 1.6;
 
     // add ground grid

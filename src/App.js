@@ -148,12 +148,12 @@ function App() {
                 clubPathAngle={clubPathAngleSliderValue}
               />
             </div> */}
-            <div className="min-h-[500px]">
+            <div className=" h-full">
               <div id="display-container">
                 <div id="status-display">
                   <canvas
                     id="golf-course"
-                    className="min-h-[500px] bg-white shadow-lg rounded-lg"
+                    className=" bg-white shadow-lg rounded-lg"
                   ></canvas>
                   <ul className="hidden">
                     <li id="status-time"></li>

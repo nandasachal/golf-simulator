@@ -10,7 +10,7 @@ const ParameterSelection = ({ values, handleValueChange }) => {
         <div className="grid grid-cols-2">
           <div
             className={classNames(
-              "px-6 py-1.5 rounded-l-lg cursor-pointer text-center",
+              "px-2 lg:px-6 py-1.5 text-sm md:text-base rounded-l-lg cursor-pointer text-center",
               values.side === "Left"
                 ? "bg-primary-600 text-white font-bold"
                 : "bg-gray-200"
@@ -21,7 +21,7 @@ const ParameterSelection = ({ values, handleValueChange }) => {
           </div>
           <div
             className={classNames(
-              "px-6 py-1.5 rounded-r-lg cursor-pointer text-center",
+              "px-2 lg:px-6 py-1.5 text-sm md:text-base rounded-r-lg cursor-pointer text-center",
               values.side === "Right"
                 ? "bg-primary-600 text-white font-bold"
                 : "bg-gray-200"
