@@ -13,10 +13,6 @@
   }
 }
 
-.golf-visual-container {
-  position: relative;
-}
-
 .golf-range,
 .golf-ball-path {
   position: absolute; /* Position both SVGs absolutely within the container */
@@ -26,12 +22,6 @@
 
 .golf-ball-path {
   z-index: 1; /* Ensure SVG2 appears above SVG1 */
-}
-
-.text-xl {
-  font-size: 1.2rem; /* Ensure SVG2 appears above SVG1 */
-  color:white;
-  background-color: black;
 }
 
 .text-justify {
@@ -60,4 +50,33 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+input[type="range"] {
+  accent-color: #4c8435;
+}
+
+#display-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+#status-display {
+  position: absolute;
+  bottom: 100px;
+  right: 20px;
+  color: cyan;
+}
+#status-display ul {
+  list-style-type: none;
+}
+#stats {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+div .dg {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
