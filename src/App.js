@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import "./App.scss";
-import GolfRangeComponent from "./components/old/GolfRangeComponent";
-import GolfBallPathComponent from "./components/old/GolfBallPathComponent";
 import { useNavigate, useLocation } from "react-router-dom";
 
 // import DescriptionComponent from "./components/old/DescriptionComponent";
@@ -13,7 +11,6 @@ import ButtonRow from "./components/simulator/button-row";
 import { Toaster } from "react-hot-toast";
 import { Tooltip } from "react-tooltip";
 import { StartBall } from "./simulate/main";
-import { WindowIcon } from "@heroicons/react/20/solid";
 
 let shot = null;
 function App() {
