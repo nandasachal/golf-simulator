@@ -150,6 +150,11 @@ function App() {
             </div> */}
             <div className=" h-full">
               <div id="display-container">
+                <div className="absolute top-4 right-4 bg-gray-200 p-2 w-[80px] font-semibold text-center aspect-square flex items-center justify-center text-lg flex-col">
+                  <p id="distance-display"></p>
+                  <p className="text-sm font-normal">Yards</p>
+                </div>
+
                 <div id="status-display">
                   <canvas
                     id="golf-course"

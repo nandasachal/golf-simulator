@@ -35,11 +35,12 @@ export const StartBall = (THREE, options) => {
   var sceneZOffset;
   var displayStartTime;
   var displaySpeed;
-  var statusElementTime;
-  var statusElementSpeed;
-  var statusElementHeight;
-  var statusElementDistance;
-  var statusElementSpin;
+  // var statusElementTime;
+  // var statusElementSpeed;
+  // var statusElementHeight;
+  // var statusElementDistance;
+  // var statusElementSpin;
+  var distanceDisplay;
 
   function init() {
     // add renderer
@@ -52,11 +53,12 @@ export const StartBall = (THREE, options) => {
     calculateContainerWidthHeight();
 
     // status elements
-    statusElementTime = document.getElementById("status-time");
-    statusElementSpeed = document.getElementById("status-speed");
-    statusElementHeight = document.getElementById("status-height");
-    statusElementDistance = document.getElementById("status-distance");
-    statusElementSpin = document.getElementById("status-spin");
+    // statusElementTime = document.getElementById("status-time");
+    // statusElementSpeed = document.getElementById("status-speed");
+    // statusElementHeight = document.getElementById("status-height");
+    // statusElementDistance = document.getElementById("status-distance");
+    // statusElementSpin = document.getElementById("status-spin");
+    distanceDisplay = document.getElementById("distance-display");
 
     // add stats
     // stats = new Stats();
@@ -239,14 +241,15 @@ export const StartBall = (THREE, options) => {
       line.position = initPoint;
       scene.add(line);
 
-      statusElementTime.innerHTML =
-        (displayTimeElapsed / 1000).toFixed(1) + " s";
-      statusElementSpeed.innerHTML =
-        toMPH(point.velocity.length()).toFixed(1) + " mph";
-      statusElementHeight.innerHTML = convertedPosition.y.toFixed(0) + " yds";
-      statusElementDistance.innerHTML = convertedPosition.z.toFixed(0) + " yds";
-      statusElementSpin.innerHTML =
-        toRPM(point.angularVelocity.length()).toFixed(0) + " rpm";
+      // statusElementTime.innerHTML =
+      //   (displayTimeElapsed / 1000).toFixed(1) + " s";
+      // statusElementSpeed.innerHTML =
+      //   toMPH(point.velocity.length()).toFixed(1) + " mph";
+      // statusElementHeight.innerHTML = convertedPosition.y.toFixed(0) + " yds";
+      // statusElementDistance.innerHTML = convertedPosition.z.toFixed(0) + " yds";
+      // statusElementSpin.innerHTML =
+      //   toRPM(point.angularVelocity.length()).toFixed(0) + " rpm";
+      distanceDisplay.innerHTML = convertedPosition.z.toFixed(0);
 
       // for adding particles
       // if (points.length % 10 == 0) {
