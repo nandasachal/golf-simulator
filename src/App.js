@@ -24,13 +24,13 @@ function App() {
   // InitHorizontalAngle
   const [clubFaceAngleSliderValue, setClubFaceAngleSliderState] = useQueryState(
     "face",
-    0.0,
+    -9,
     true
   );
   // InitSpinAngle
   const [clubPathAngleSliderValue, setClubPathAngleSliderState] = useQueryState(
     "path",
-    0.0,
+    3,
     true
   );
   // InitSpeedMPH

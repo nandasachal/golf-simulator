@@ -59,9 +59,9 @@ THREE.OrbitControls = function (object, domElement) {
   var zoomEnd = new THREE.Vector2();
   var zoomDelta = new THREE.Vector2();
 
-  var phiDelta = 0;
+  var phiDelta = 0.12;
   var thetaDelta = 0;
-  var scale = 0.95;
+  var scale = 0.78;
 
   var lastPosition = new THREE.Vector3();
 
@@ -292,6 +292,7 @@ THREE.OrbitControls = function (object, domElement) {
     if (scope.enabled === false) return;
     if (scope.userPan === false) return;
 
+    // eslint-disable-next-line default-case
     switch (event.keyCode) {
       /*case scope.keys.UP:
 				scope.pan( new THREE.Vector3( 0, 1, 0 ) );
@@ -319,6 +320,7 @@ THREE.OrbitControls = function (object, domElement) {
   }
 
   function onKeyUp(event) {
+    // eslint-disable-next-line default-case
     switch (event.keyCode) {
       case scope.keys.ROTATE:
       case scope.keys.ZOOM:
