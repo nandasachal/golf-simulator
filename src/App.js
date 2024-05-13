@@ -11,6 +11,11 @@ import ButtonRow from "./components/simulator/button-row";
 import { Toaster } from "react-hot-toast";
 import { Tooltip } from "react-tooltip";
 import { StartBall } from "./simulate/main";
+import {
+  CLUB_FACE_ANGLE_VALUES,
+  CLUB_PATH_ANGLE_VALUES,
+  SWING_SPEED_VALUES,
+} from "./utils/constant";
 
 let shot = null;
 function App() {
@@ -21,19 +26,19 @@ function App() {
   // InitHorizontalAngle
   const [clubFaceAngleSliderValue, setClubFaceAngleSliderState] = useQueryState(
     "face",
-    -9,
+    CLUB_FACE_ANGLE_VALUES.DEFAULT,
     true
   );
   // InitSpinAngle
   const [clubPathAngleSliderValue, setClubPathAngleSliderState] = useQueryState(
     "path",
-    3,
+    CLUB_PATH_ANGLE_VALUES.DEFAULT,
     true
   );
   // InitSpeedMPH
   const [swingSpeedSliderValue, setSwingSpeedSliderState] = useQueryState(
     "speed",
-    80.0,
+    SWING_SPEED_VALUES.DEFAULT,
     true
   );
 
@@ -65,9 +70,9 @@ function App() {
     if (window.THREE) {
       shot = StartBall(window.THREE, {
         initSpeedMPH: swingSpeedSliderValue,
+        initSpinAngle: clubFaceAngleSliderValue * (side === "Left" ? -1 : 1),
         initHorizontalAngleDegrees:
-          clubFaceAngleSliderValue * (side === "Left" ? -1 : 1),
-        initSpinAngle: clubPathAngleSliderValue * (side === "Left" ? -1 : 1),
+          clubPathAngleSliderValue * (side === "Left" ? -1 : 1),
       });
     }
     toggleZoom();
@@ -77,9 +82,9 @@ function App() {
   const handleClick = () => {
     if (shot) {
       shot.shotControl.initSpeedMPH = swingSpeedSliderValue;
-      shot.shotControl.initHorizontalAngleDegrees =
-        clubFaceAngleSliderValue * (side === "Left" ? -1 : 1);
       shot.shotControl.initSpinAngle =
+        clubFaceAngleSliderValue * (side === "Left" ? -1 : 1);
+      shot.shotControl.initHorizontalAngleDegrees =
         clubPathAngleSliderValue * (side === "Left" ? -1 : 1);
       shot.beginShot();
     }

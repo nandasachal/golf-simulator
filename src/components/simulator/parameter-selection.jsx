@@ -1,6 +1,11 @@
 import React from "react";
 import SliderVariable from "../old/SliderVariable";
 import { classNames } from "../../utils/functions";
+import {
+  CLUB_FACE_ANGLE_VALUES,
+  CLUB_PATH_ANGLE_VALUES,
+  SWING_SPEED_VALUES,
+} from "../../utils/constant";
 
 const ParameterSelection = ({ values, handleValueChange }) => {
   return (
@@ -35,10 +40,10 @@ const ParameterSelection = ({ values, handleValueChange }) => {
 
       <SliderVariable
         name={"Club Face Angle"}
-        minValue={-45}
-        maxValue={45}
-        steps={1}
-        defaultValue={0}
+        minValue={CLUB_FACE_ANGLE_VALUES.MIN}
+        maxValue={CLUB_FACE_ANGLE_VALUES.MAX}
+        steps={CLUB_FACE_ANGLE_VALUES.STEP}
+        defaultValue={CLUB_FACE_ANGLE_VALUES.DEFAULT}
         units={"°"}
         value={values.clubFaceAngleSliderValue}
         handleValueChange={(value) => {
@@ -48,10 +53,10 @@ const ParameterSelection = ({ values, handleValueChange }) => {
       />
       <SliderVariable
         name={"Club Path Angle"}
-        minValue={-45}
-        maxValue={45}
-        steps={1}
-        defaultValue={0}
+        minValue={CLUB_PATH_ANGLE_VALUES.MIN}
+        maxValue={CLUB_PATH_ANGLE_VALUES.MAX}
+        steps={CLUB_PATH_ANGLE_VALUES.STEP}
+        defaultValue={CLUB_PATH_ANGLE_VALUES.DEFAULT}
         units={"°"}
         value={values.clubPathAngleSliderValue}
         handleValueChange={(value) => {
@@ -65,10 +70,10 @@ const ParameterSelection = ({ values, handleValueChange }) => {
       />
       <SliderVariable
         name={"Swing Speed"}
-        minValue={50}
-        maxValue={140}
-        steps={1}
-        defaultValue={140}
+        minValue={SWING_SPEED_VALUES.MIN}
+        maxValue={SWING_SPEED_VALUES.MAX}
+        steps={SWING_SPEED_VALUES.STEP}
+        defaultValue={SWING_SPEED_VALUES.DEFAULT}
         value={values.swingSpeedSliderValue}
         units={"miles per hour"}
         handleValueChange={(value) => {
