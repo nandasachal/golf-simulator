@@ -51,6 +51,7 @@ const ParameterSelection = ({ values, handleValueChange }) => {
         }}
         tooltipText="The angle of your club head, where negative is a closed club face and a positive is a open club face."
       />
+
       <SliderVariable
         name={"Club Path Angle"}
         minValue={CLUB_PATH_ANGLE_VALUES.MIN}
@@ -68,6 +69,7 @@ const ParameterSelection = ({ values, handleValueChange }) => {
             : "The direction you are swinging in relation to the straight line, where negative is pointing right and positive is pointing left."
         }
       />
+
       <SliderVariable
         name={"Swing Speed"}
         minValue={SWING_SPEED_VALUES.MIN}
